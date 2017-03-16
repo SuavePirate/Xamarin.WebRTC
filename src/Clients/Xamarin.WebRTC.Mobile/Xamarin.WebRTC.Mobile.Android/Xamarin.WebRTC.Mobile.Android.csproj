@@ -38,6 +38,36 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="FM">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.Audio">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.Audio.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.IceLink.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink.WebRTC">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.IceLink.WebRTC.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink.WebSync">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.IceLink.WebSync.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.Video">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync.Chat">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.Chat.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync.Subscribers">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.Subscribers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />

@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>d3a6f681-73f1-46c5-9513-805505224545</ProjectGuid>
+    <ProjectGuid>{D3A6F681-73F1-46C5-9513-805505224545}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Xamarin.WebRTC.Mobile.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
@@ -61,6 +61,36 @@
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="FM">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.Audio">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.Audio.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.IceLink.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink.WebRTC">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.IceLink.WebRTC.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink.WebSync">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.IceLink.WebSync.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.Video">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.WebSync.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync.Chat">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.WebSync.Chat.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync.Subscribers">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\ios-unified\FM.WebSync.Subscribers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
