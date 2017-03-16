@@ -15,14 +15,15 @@ using Xamarin.WebRTC.Mobile.Android.Codecs.VP8;
 using Xamarin.WebRTC.Mobile.Android.Codecs.Opus;
 using FM.IceLink;
 using Newtonsoft.Json;
+using Xamarin.WebRTC.Mobile;
 
 namespace Xamarin.WebRTC.Mobile.Droid
 {
     public class ConferenceService
     {
-        private const string STUN_TURN_URL = "{YOUR STUN TURN SERVER URL HERE}";
+        private const string STUN_TURN_URL = "demo.icelink.fm:3478";
         private readonly SignalingService _signalingService;
-        private readonly string _roomName;
+        private string _roomName;
         private LocalMediaStream _localMedia;
         private Conference _conference;
         private AndroidLayoutManager _layoutManager;
@@ -32,11 +33,23 @@ namespace Xamarin.WebRTC.Mobile.Droid
         public ConferenceService()
         {
             _signalingService = new SignalingService();
-            _signalingService.NewConnectionAction = ReceiveNewPeer;
-            _signalingService.ReceiveOfferAnswerAction = ReceiveOfferAnswer;
-            _signalingService.ReceiveCandidateAction = ReceiveCandidate;
-            InitJavaLibs();
+            _signalingService.OnNewConnection += (s, a) =>
+            {
+                ReceiveNewPeer(a.PeerId);
+            };
+
+            _signalingService.OnNewOfferAnswer += (s, a) =>
+            {
+                ReceiveOfferAnswer(a.PeerId, a.Json);
+            };
+
+            _signalingService.OnNewCandidate += (s, a) =>
+            {
+                ReceiveCandidate(a.PeerId, a.Json);
+            };
+
             RegisterCodecs();
+            InitJavaLibs();
         }
 
         /// <summary>
@@ -90,9 +103,10 @@ namespace Xamarin.WebRTC.Mobile.Droid
 
         public async Task StartAsync(string roomName, ViewGroup videoContainer)
         {
+            _roomName = roomName;
             await _signalingService.StartAsync();
             await _signalingService.JoinConferenceAsync(roomName);
-            await GetUserMedia(Application.Context, videoContainer);
+            GetUserMedia(Application.Context, videoContainer);
         }
         public void SwitchCamera()
         {
@@ -133,33 +147,35 @@ namespace Xamarin.WebRTC.Mobile.Droid
             }
         }
 
-        public async Task GetUserMedia(Context context, ViewGroup videoContainer)
+        public void GetUserMedia(Context context, ViewGroup videoContainer)
         {
             DefaultProviders.AndroidContext = context;
 
-            var result = await UserMedia.GetMediaAsync(new GetMediaArgs(true, true)
+            UserMedia.GetMedia(new GetMediaArgs(true, true)
             {
                 DefaultVideoPreviewScale = LayoutScale.Contain,
                 DefaultVideoScale = LayoutScale.Contain,
                 VideoWidth = 640,
                 VideoHeight = 480,
+                OnSuccess = (result) =>
+                {
+                    _localMedia = result.LocalStream;
+                    _layoutManager = new AndroidLayoutManager(videoContainer);
+                    _senderLocalVideoControl = (View)result.LocalVideoControl;
+                    var localVideoStream = new VideoStream(result.LocalStream);
+                    _conference = new Conference(STUN_TURN_URL, new Stream[]{ new AudioStream(result.LocalStream), localVideoStream });
+                    _conference.RelayUsername = "test";
+                    _conference.RelayPassword = "pa55word!";
+                    _conference.DtlsCertificate = Certificate.GenerateCertificate();
+                    _conference.OnLinkCandidate += Conference_OnLinkCandidate;
+                    _conference.OnLinkOfferAnswer += Conference_OnLinkOfferAnswer;
+                    localVideoStream.OnLinkInit += LocalVideoStream_OnLinkInit;
+                    localVideoStream.OnLinkDown += LocalVideoStream_OnLinkDown;
+                    _layoutManager.SetLocalVideoControl(_senderLocalVideoControl);
+                }
             });
 
-            _localMedia = result.LocalStream;
-            _layoutManager = new AndroidLayoutManager(videoContainer);
-            _senderLocalVideoControl = (View)result.LocalVideoControl;
-            var localVideoStream = new VideoStream(result.LocalStream);
-            _conference = new Conference("STUN_TURN_URL", new Stream[]
-            {
-                new AudioStream(result.LocalStream),
-                
-            });
-            _conference.RelayUsername = "test";
-            _conference.RelayPassword = "password";
-            _conference.OnLinkCandidate += Conference_OnLinkCandidate;
-            _conference.OnLinkOfferAnswer += Conference_OnLinkOfferAnswer;
-            localVideoStream.OnLinkInit += LocalVideoStream_OnLinkInit;
-            localVideoStream.OnLinkDown += LocalVideoStream_OnLinkDown;
+          
         }
 
         private void LocalVideoStream_OnLinkDown(StreamLinkDownArgs p)

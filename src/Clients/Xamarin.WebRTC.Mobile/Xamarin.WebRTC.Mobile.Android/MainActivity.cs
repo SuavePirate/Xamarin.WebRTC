@@ -26,7 +26,7 @@ namespace Xamarin.WebRTC.Mobile.Droid
 			Button button = FindViewById<Button> (Resource.Id.myButton);
 			
 			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
+                StartActivity(typeof(ConferenceActivity));
 			};
 		}
 	}

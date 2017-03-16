@@ -12,16 +12,14 @@ namespace Xamarin.WebRTC.Mobile
     /// </summary>
     public class SignalingService
     {
-        private const string CONNECTION_URL = "{PUT YOUR URL FOR SIGNALR HERE}";
+        private const string CONNECTION_URL = "http://xamarinwebrtcsignalingexample.azurewebsites.net/";
         private readonly HubConnection _connection;
         private readonly IHubProxy _conferenceHubProxy;
-
+        public event EventHandler<PeerConnectionEventArgs> OnNewConnection;
+        public event EventHandler<OfferAnswerEventArgs> OnNewOfferAnswer;
+        public event EventHandler<CandidateEventArgs> OnNewCandidate;
         // Set these externally
-        public Action<string> NewConnectionAction { private get; set; }
-        public Action<string,string> ReceiveOfferAnswerAction { private get; set; }
-        public Action<string,string> ReceiveCandidateAction { private get; set; }
-
-
+     
         public SignalingService()
         {
             _connection = new HubConnection(CONNECTION_URL);
@@ -54,11 +52,31 @@ namespace Xamarin.WebRTC.Mobile
         /// </summary>
         private void InitEndpoints()
         {
-            _conferenceHubProxy.On("newConnection", NewConnectionAction);
+            _conferenceHubProxy.On<string>("newConnection", (peerId) =>
+            {
+                OnNewConnection?.Invoke(this, new PeerConnectionEventArgs
+                {
+                    PeerId = peerId
+                });
+            });
 
-            _conferenceHubProxy.On("receiveOfferAnswer", ReceiveOfferAnswerAction);
+            _conferenceHubProxy.On<string,string>("receiveOfferAnswer", (peerId, json) =>
+            {
+                OnNewOfferAnswer?.Invoke(this, new OfferAnswerEventArgs
+                {
+                    PeerId = peerId,
+                    Json = json
+                });
+            });
 
-            _conferenceHubProxy.On("receiveCandidate", ReceiveCandidateAction);
+            _conferenceHubProxy.On<string,string>("receiveCandidate", (peerId, json) =>
+            {
+                OnNewCandidate?.Invoke(this, new CandidateEventArgs
+                {
+                    PeerId = peerId,
+                    Json = json
+                });
+            });
         }
     }
 }
