@@ -29,6 +29,11 @@ namespace Xamarin.WebRTC.Mobile
             InitEndpoints();
         }
 
+        public async Task StartAsync()
+        {
+            await _connection.Start();
+        }
+
         public async Task JoinConferenceAsync(string conferenceName)
         {
             await _conferenceHubProxy.Invoke("JoinRoom", conferenceName);

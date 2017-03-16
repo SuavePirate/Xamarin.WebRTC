@@ -68,6 +68,10 @@
     <Reference Include="FM.WebSync.Subscribers">
       <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.Subscribers.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -79,12 +83,73 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codecs\AudioProcessing\AcousticEchoCanceller.cs" />
+    <Compile Include="Codecs\AudioProcessing\AudioProcessingLibrary.cs" />
+    <Compile Include="Codecs\Opus\Decoder.cs" />
+    <Compile Include="Codecs\Opus\Encoder.cs" />
+    <Compile Include="Codecs\Opus\OpusCodec.cs" />
+    <Compile Include="Codecs\Opus\OpusEchoCanceller.cs" />
+    <Compile Include="Codecs\Opus\OpusLibrary.cs" />
+    <Compile Include="Codecs\VP8\Decoder.cs" />
+    <Compile Include="Codecs\VP8\Encoder.cs" />
+    <Compile Include="Codecs\VP8\LibVpxCom.cs" />
+    <Compile Include="Codecs\VP8\LibVpxDec.cs" />
+    <Compile Include="Codecs\VP8\LibVpxEnc.cs" />
+    <Compile Include="Codecs\VP8\LibVpxEncConfig.cs" />
+    <Compile Include="Codecs\VP8\LibVpxException.cs" />
+    <Compile Include="Codecs\VP8\Rational.cs" />
+    <Compile Include="Codecs\VP8\Vp8Codec.cs" />
     <Compile Include="ConferenceActivity.cs" />
+    <Compile Include="ConferenceService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <AndroidNativeLibrary Include="lib\arm64-v8a\libopus.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\arm64-v8a\libopusJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\arm64-v8a\libvpx.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\arm64-v8a\libvpxJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libaudioprocessing.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libaudioprocessingJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libopus.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libopusJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libvpx.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libvpxJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\x86\libopus.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\x86\libopusJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\x86\libvpx.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="lib\x86\libvpxJNI.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidNativeLibrary>
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -98,5 +163,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>

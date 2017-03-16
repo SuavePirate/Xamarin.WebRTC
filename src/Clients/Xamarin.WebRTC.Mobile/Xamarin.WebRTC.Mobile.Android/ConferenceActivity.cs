@@ -12,7 +12,13 @@ using Android.Widget;
 
 namespace Xamarin.WebRTC.Mobile.Droid
 {
+    [Activity]
     public class ConferenceActivity : Activity
     {
+        private readonly ConferenceService _conferenceService;
+        public ConferenceActivity()
+        {
+            _conferenceService = new ConferenceService();
+        }
     }
 }
