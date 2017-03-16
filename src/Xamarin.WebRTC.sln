@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cloud", "Cloud", "{98A2C71F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.WebRTC.StunTurn", "Cloud\Xamarin.WebRTC.StunTurn\Xamarin.WebRTC.StunTurn.csproj", "{4E3C748C-62D2-4102-AAB6-9C4A5897937C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Xamarin.WebRTC.Signaling", "Cloud\Xamarin.WebRTC.Signaling\Xamarin.WebRTC.Signaling.xproj", "{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.WebRTC.Mobile", "Clients\Xamarin.WebRTC.Mobile\Xamarin.WebRTC.Mobile\Xamarin.WebRTC.Mobile.csproj", "{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.WebRTC.Mobile.Android", "Clients\Xamarin.WebRTC.Mobile\Xamarin.WebRTC.Mobile.Android\Xamarin.WebRTC.Mobile.Android.csproj", "{B3584B98-46BF-4573-AAA2-6019891DD740}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.WebRTC.Mobile.iOS", "Clients\Xamarin.WebRTC.Mobile\Xamarin.WebRTC.Mobile.iOS\Xamarin.WebRTC.Mobile.iOS.csproj", "{D3A6F681-73F1-46C5-9513-805505224545}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.WebRTC.Signaling", "Cloud\Xamarin.WebRTC.Signaling\Xamarin.WebRTC.Signaling.csproj", "{53E56800-1DBF-4D65-8907-F7D7208CB763}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,18 +39,6 @@ Global
 		{4E3C748C-62D2-4102-AAB6-9C4A5897937C}.Release|iPhone.Build.0 = Release|Any CPU
 		{4E3C748C-62D2-4102-AAB6-9C4A5897937C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{4E3C748C-62D2-4102-AAB6-9C4A5897937C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Release|iPhone.Build.0 = Release|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -91,15 +79,27 @@ Global
 		{D3A6F681-73F1-46C5-9513-805505224545}.Release|iPhone.Build.0 = Release|iPhone
 		{D3A6F681-73F1-46C5-9513-805505224545}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{D3A6F681-73F1-46C5-9513-805505224545}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Release|iPhone.Build.0 = Release|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{53E56800-1DBF-4D65-8907-F7D7208CB763}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E3C748C-62D2-4102-AAB6-9C4A5897937C} = {98A2C71F-BF3F-4E6E-9253-E81DA6D39B2E}
-		{C2E4222F-3748-4B7E-9F26-DDAFE81B2BD3} = {98A2C71F-BF3F-4E6E-9253-E81DA6D39B2E}
 		{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB} = {A40EDE6E-535F-4F6F-9BD7-587BD049CD88}
 		{B3584B98-46BF-4573-AAA2-6019891DD740} = {A40EDE6E-535F-4F6F-9BD7-587BD049CD88}
 		{D3A6F681-73F1-46C5-9513-805505224545} = {A40EDE6E-535F-4F6F-9BD7-587BD049CD88}
+		{53E56800-1DBF-4D65-8907-F7D7208CB763} = {98A2C71F-BF3F-4E6E-9253-E81DA6D39B2E}
 	EndGlobalSection
 EndGlobal
