@@ -28,6 +28,7 @@ namespace Xamarin.WebRTC.Mobile.Droid
         private Conference _conference;
         private AndroidLayoutManager _layoutManager;
         private View _senderLocalVideoControl;
+        private OpusEchoCanceller _opusEchoCanceller;
 
 
         public ConferenceService()
@@ -63,7 +64,8 @@ namespace Xamarin.WebRTC.Mobile.Droid
             }, true);
             AudioStream.RegisterCodec("opus", 4800, 2, () =>
             {
-                return new OpusCodec();
+
+                return new OpusCodec(_opusEchoCanceller);
             }, true);
         }
 
@@ -72,8 +74,11 @@ namespace Xamarin.WebRTC.Mobile.Droid
         /// </summary>
         private void InitJavaLibs()
         {
-            Java.Lang.JavaSystem.LoadLibrary("audioprocessing");
-            Java.Lang.JavaSystem.LoadLibrary("audioprocessingJNI");
+            if (!Build.CpuAbi.ToLower().Contains("x86") && !Build.CpuAbi.ToLower().Contains("arm64"))
+            {
+                Java.Lang.JavaSystem.LoadLibrary("audioprocessing");
+                Java.Lang.JavaSystem.LoadLibrary("audioprocessingJNI");
+            }
             Java.Lang.JavaSystem.LoadLibrary("opus");
             Java.Lang.JavaSystem.LoadLibrary("opusJNI");
             Java.Lang.JavaSystem.LoadLibrary("vpx");
@@ -105,8 +110,9 @@ namespace Xamarin.WebRTC.Mobile.Droid
         {
             _roomName = roomName;
             await _signalingService.StartAsync();
-            await _signalingService.JoinConferenceAsync(roomName);
             GetUserMedia(Application.Context, videoContainer);
+            await _signalingService.JoinConferenceAsync(roomName);
+
         }
         public void SwitchCamera()
         {
@@ -157,6 +163,7 @@ namespace Xamarin.WebRTC.Mobile.Droid
                 DefaultVideoScale = LayoutScale.Contain,
                 VideoWidth = 640,
                 VideoHeight = 480,
+                VideoFrameRate = 15,
                 OnSuccess = (result) =>
                 {
                     _localMedia = result.LocalStream;
@@ -169,9 +176,12 @@ namespace Xamarin.WebRTC.Mobile.Droid
                     _conference.DtlsCertificate = Certificate.GenerateCertificate();
                     _conference.OnLinkCandidate += Conference_OnLinkCandidate;
                     _conference.OnLinkOfferAnswer += Conference_OnLinkOfferAnswer;
+                    
                     localVideoStream.OnLinkInit += LocalVideoStream_OnLinkInit;
                     localVideoStream.OnLinkDown += LocalVideoStream_OnLinkDown;
                     _layoutManager.SetLocalVideoControl(_senderLocalVideoControl);
+                    _opusEchoCanceller = new OpusEchoCanceller(4800, 2);
+                    _opusEchoCanceller.Start();
                 }
             });
 

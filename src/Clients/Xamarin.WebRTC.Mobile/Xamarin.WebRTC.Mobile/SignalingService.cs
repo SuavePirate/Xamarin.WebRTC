@@ -12,7 +12,7 @@ namespace Xamarin.WebRTC.Mobile
     /// </summary>
     public class SignalingService
     {
-        private const string CONNECTION_URL = "http://xamarinwebrtcsignalingexample.azurewebsites.net/";
+        private const string CONNECTION_URL = "http://xamarinwebrtcsignalingexample.azurewebsites.net/signalr/hubs";
         private readonly HubConnection _connection;
         private readonly IHubProxy _conferenceHubProxy;
         public event EventHandler<PeerConnectionEventArgs> OnNewConnection;
