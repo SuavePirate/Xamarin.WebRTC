@@ -21,7 +21,7 @@ namespace Xamarin.WebRTC.Mobile.Droid
 {
     public class ConferenceService
     {
-        private const string STUN_TURN_URL = "demo.icelink.fm:3478";
+        private const string STUN_TURN_URL = "turn.icelink.fm:3478";
         private readonly SignalingService _signalingService;
         private string _roomName;
         private LocalMediaStream _localMedia;
@@ -172,7 +172,7 @@ namespace Xamarin.WebRTC.Mobile.Droid
                     var localVideoStream = new VideoStream(result.LocalStream);
                     _conference = new Conference(STUN_TURN_URL, new Stream[]{ new AudioStream(result.LocalStream), localVideoStream });
                     _conference.RelayUsername = "test";
-                    _conference.RelayPassword = "pa55word!";
+                    _conference.RelayPassword = "pa55w0rd!";
                     _conference.DtlsCertificate = Certificate.GenerateCertificate();
                     _conference.OnLinkCandidate += Conference_OnLinkCandidate;
                     _conference.OnLinkOfferAnswer += Conference_OnLinkOfferAnswer;
@@ -182,6 +182,10 @@ namespace Xamarin.WebRTC.Mobile.Droid
                     _layoutManager.SetLocalVideoControl(_senderLocalVideoControl);
                     _opusEchoCanceller = new OpusEchoCanceller(4800, 2);
                     _opusEchoCanceller.Start();
+                },
+                OnFailure = (error) =>
+                {
+                    Console.WriteLine(error);
                 }
             });
 

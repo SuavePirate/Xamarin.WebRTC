@@ -16,6 +16,7 @@
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AssemblyName>Xamarin.WebRTC.Mobile.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,8 +26,8 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -36,48 +37,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>.Net (Xamarin)</Debugger>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
-    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
     <DebugSymbols>False</DebugSymbols>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\BouncyCastle.dll</HintPath>
-    </Reference>
-    <Reference Include="FM">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.Audio">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.Audio.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.IceLink">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.IceLink.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.IceLink.WebRTC">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.IceLink.WebRTC.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.IceLink.WebSync">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.IceLink.WebSync.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.Video">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.Video.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.WebSync">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.WebSync.Chat">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.Chat.dll</HintPath>
-    </Reference>
-    <Reference Include="FM.WebSync.Subscribers">
-      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.17\lib\android\FM.WebSync.Subscribers.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -86,10 +51,41 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="BouncyCastle">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\BouncyCastle.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.Audio">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.Audio.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink.WebRTC">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.IceLink.WebRTC.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink.WebSync">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.IceLink.WebSync.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.IceLink">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.IceLink.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.Video">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync.Chat">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.WebSync.Chat.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync.Subscribers">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.WebSync.Subscribers.dll</HintPath>
+    </Reference>
+    <Reference Include="FM.WebSync">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.WebSync.dll</HintPath>
+    </Reference>
+    <Reference Include="FM">
+      <HintPath>..\..\..\Components\IceLinkCommunity-2.9.25\lib\android\FM.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.WebRTC.Mobile\Xamarin.WebRTC.Mobile.csproj">
       <Name>Xamarin.WebRTC.Mobile</Name>
+      <Project>{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -179,5 +175,11 @@
   <ItemGroup>
     <AndroidJavaSource Include="java\Rational.java" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <XamarinComponentReference Include="IceLinkCommunity">
+      <Version>2.9.25</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

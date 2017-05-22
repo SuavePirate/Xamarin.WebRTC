@@ -99,6 +99,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.WebRTC.Mobile\Xamarin.WebRTC.Mobile.csproj">
       <Name>Xamarin.WebRTC.Mobile</Name>
+      <Project>{014A4E55-8719-4FE1-B32D-0B34F6F8DDCB}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
